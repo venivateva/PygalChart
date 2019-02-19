@@ -19,7 +19,10 @@ data=pandas.read_csv('data.csv',index_col=0,squeeze=True).to_dict()
 print(data)
 
 bar_chart=pygal.Bar(style=LightStyle, width=500, height=700, legend_at_bottom=True, human_readable=True, title=title)
+
 value=data.values()
-for key in data:
-    bar_chart.add(title=key[0],values=value)
+
+bar_chart.add(str(list(data.keys())),values=value)
+
+
 bar_chart.render_to_file('bar_chart.svg')
